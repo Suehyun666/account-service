@@ -21,6 +21,7 @@ dependencies {
     //Database
     implementation 'io.quarkus:quarkus-jdbc-postgresql'
     implementation 'io.quarkiverse.jooq:quarkus-jooq:2.1.0'
+    implementation 'io.quarkus:quarkus-flyway'
 
     //Redis
     implementation 'io.quarkus:quarkus-redis-cache'

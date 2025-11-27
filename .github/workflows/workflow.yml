@@ -78,7 +78,7 @@ jobs:
             # 여기서 image_tag를 account.nomad에 넘긴다
             nomad job run \
               -var="image_tag=${{ env.IMAGE_TAG }}" \
-              /opt/nomad-jobs/app/account.nomad
+              /opt/nomad-jobs/app/account-grpc.nomad
 
             nomad job status account
             echo "✅ Deployment triggered."

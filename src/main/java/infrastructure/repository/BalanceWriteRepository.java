@@ -96,7 +96,8 @@ public class BalanceWriteRepository {
                 String unreserveRequestId = "un:" + requestId;
 
                 boolean exists = tx.fetchExists(
-                    tx.selectOne().from("account_ledger").where("request_id = ?", unreserveRequestId)
+                    tx.selectOne().from("account_ledger")
+                        .where("request_id = ? AND entry_type = 'UNRESERVE'", unreserveRequestId)
                 );
                 if (exists) {
                     metrics.incrementDuplicate("unreserve_cash");

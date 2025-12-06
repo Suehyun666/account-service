@@ -7,12 +7,12 @@ CREATE TABLE accounts (
     currency     TEXT NOT NULL DEFAULT 'USD',
     status       TEXT NOT NULL DEFAULT 'ACTIVE',
     created_at   TIMESTAMPTZ NOT NULL DEFAULT now(),
-    updated_at   TIMESTAMPTZ NOT NULL DEFAULT now()
-);
+    updated_at   TIMESTAMPTZ NOT NULL DEFAULT now(),
 
-ALTER TABLE accounts
-    ADD CONSTRAINT chk_accounts_status
-        CHECK (status IN ('ACTIVE', 'SUSPENDED', 'CLOSED'));
+    CONSTRAINT chk_accounts_status CHECK (status IN ('ACTIVE', 'SUSPENDED', 'CLOSED')),
+    CONSTRAINT chk_accounts_balance_positive CHECK (balance >= 0),
+    CONSTRAINT chk_accounts_reserved_positive CHECK (reserved >= 0)
+);
 
 
 CREATE INDEX idx_accounts_account_no ON accounts(account_no);
@@ -52,6 +52,7 @@ CREATE TABLE positions (
     updated_at        TIMESTAMPTZ NOT NULL DEFAULT now(),
 
     CONSTRAINT fk_positions_account FOREIGN KEY (account_id) REFERENCES accounts(account_id),
+    CONSTRAINT chk_positions_quantity_positive CHECK (quantity >= 0),
     CONSTRAINT chk_positions_reserved CHECK (reserved_quantity >= 0 AND reserved_quantity <= quantity)
 );
 

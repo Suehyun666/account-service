@@ -8,4 +8,4 @@ pluginManagement {
         id "${quarkusPluginId}" version "${quarkusPluginVersion}"
     }
 }
-rootProject.name = 'account-service'
+rootProject.name = 'account-command-service'

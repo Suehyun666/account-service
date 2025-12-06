@@ -75,7 +75,8 @@ public class PositionWriteRepository {
                 String unreserveRequestId = "un:" + requestId;
 
                 boolean exists = tx.fetchExists(
-                    tx.selectOne().from("position_ledger").where("request_id = ?", unreserveRequestId)
+                    tx.selectOne().from("position_ledger")
+                        .where("request_id = ? AND entry_type = 'UNRESERVE'", unreserveRequestId)
                 );
                 if (exists) {
                     return CommandResult.duplicate();

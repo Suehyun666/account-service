@@ -1,15 +1,15 @@
 -- WITH new_accounts AS (
 -- INSERT INTO accounts (account_id, account_no, balance, reserved, currency, status, created_at, updated_at)
 -- SELECT
---     i,                -- account_id (1000 ~ 2001 강제 지정)
---     i::TEXT,          -- account_no ('1000' ~ '2001')
+--     i,                -- account_id
+--     i::TEXT,          -- account_no
 --     100000.00,        -- balance
 --     0,                -- reserved
 --     'USD',            -- currency
 --     'ACTIVE',         -- status
 --     now(),            -- created_at
 --     now()             -- updated_at
--- FROM generate_series(1000, 2001) AS i
+-- FROM generate_series(1, 3001) AS i
 --     ON CONFLICT (account_id) DO NOTHING
 --     RETURNING account_id, account_no, balance
 -- )

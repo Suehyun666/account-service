@@ -3,7 +3,7 @@
 -- SELECT
 --     i,                -- account_id
 --     i::TEXT,          -- account_no
---     100000.00,        -- balance
+--     1000000000000.00, -- balance
 --     0,                -- reserved
 --     'USD',            -- currency
 --     'ACTIVE',         -- status
